@@ -18,4 +18,4 @@ steps:
   - builder-test=gcr.io/${PROJECT_ID}/quickstart-image:${COMMIT_SHA}
   env:
   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}
+  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
