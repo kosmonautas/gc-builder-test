@@ -8,8 +8,6 @@ steps:
     'gcr.io/${PROJECT_ID}/quickstart-image:${COMMIT_SHA}',
     '.'
     ]
-# images:
-# - 'gcr.io/${PROJECT_ID}/quickstart-image:${COMMIT_SHA}'
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/${PROJECT_ID}/quickstart-image:${COMMIT_SHA}"]
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -20,4 +18,4 @@ steps:
   - builder-test=gcr.io/${PROJECT_ID}/quickstart-image:${COMMIT_SHA}
   env:
   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-  - 'CLOUDSDK_COMPUTE_ZONE=us-west1-a'
+  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}
