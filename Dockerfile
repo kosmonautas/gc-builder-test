@@ -4,4 +4,4 @@ COPY quickstart.sh /
 
 ARG ENV
 RUN echo $ENV
-RUN echo ${ENV} > /root/env
+RUN echo $ENV > /root/env
