@@ -5,17 +5,17 @@ steps:
     '--build-arg',
     'ENV=${_ENV}',
     '-t',
-    'gcr.io/${PROJECT_ID}/quickstart-image:${COMMIT_SHA}',
+    'gcr.io/${PROJECT_ID}/${REPO_NAME}/${BRANCH_NAME}:${SHORT_SHA}',
     '.'
     ]
 - name: 'gcr.io/cloud-builders/docker'
-  args: ["push", "gcr.io/${PROJECT_ID}/quickstart-image:${COMMIT_SHA}"]
+  args: ['push', 'gcr.io/${PROJECT_ID}/${REPO_NAME}/${BRANCH_NAME}:${SHORT_SHA}']
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
   - set
   - image
-  - deployment/builder-test
-  - builder-test=gcr.io/${PROJECT_ID}/quickstart-image:${COMMIT_SHA}
+  - deployment/${REPO_NAME}
+  - ${REPO_NAME}=gcr.io/${PROJECT_ID}/${REPO_NAME}/${BRANCH_NAME}:${SHORT_SHA}
   env:
   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
   - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
